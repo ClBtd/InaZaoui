@@ -26,10 +26,10 @@ Avant d'installer le projet, assurez-vous d'avoir les éléments suivants sur vo
 
 ```bash
 # Cloner le dépôt Git
-git clone https://github.com/clbtd/ina-zaoui.git
+git clone https://github.com/clbtd/InaZaoui.git
 
 # Accéder au répertoire du projet
-cd ina-zaoui
+cd InaZaoui
 ```
 
 ### 2. Installation des dépendances
@@ -76,17 +76,17 @@ symfony serve
 php -S localhost:8000 -t public/
 ```
 
-## 🖥️ Utilisation
+## Utilisation
 
 Une fois le serveur démarré, accédez à l'application via :
 
-- 🌐 **Interface publique** : [http://localhost:8000](http://localhost:8000)
-- ⚙️ **Administration** : [http://localhost:8000/admin](http://localhost:8000/admin)
+- **Interface publique** : [http://localhost:8000](http://localhost:8000)
+- **Administration** : [http://localhost:8000/admin](http://localhost:8000/admin)
   - Identifiants par défaut (si fixtures chargées) :
   - Email : admin@example.com
   - Mot de passe : password
 
-## 🧪 Tests et qualité
+## Tests et qualité
 
 ### Configuration de l'environnement de test
 
@@ -111,3 +111,8 @@ php bin/console doctrine:fixtures:load --env=test
 ./vendor/bin/phpunit --coverage-html var/coverage
 ```
 Le rapport de couverture sera disponible dans le dossier `var/coverage`.
+
+
+## Licence
+
+Ce projet est sous licence MIT. Voir le fichier LICENSE pour plus de détails.

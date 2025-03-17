@@ -1,0 +1,118 @@
+# Guide de contribution
+
+Merci de votre intérêt pour contribuer au projet Ina Zaoui Photography ! Ce document fournit les directives et instructions pour contribuer efficacement à ce projet.
+
+## Soumettre des problèmes (Issues)
+
+Si vous rencontrez des bugs ou souhaitez suggérer des améliorations :
+
+1. **Vérifiez d'abord** si votre problème n'a pas déjà été signalé dans la section Issues du dépôt.
+2. **Utilisez le modèle approprié** lors de la création d'une nouvelle issue :
+   - Pour les bugs : utilisez le modèle "Bug Report"
+   - Pour les suggestions : utilisez le modèle "Feature Request"
+3. **Soyez précis** dans votre description :
+   - Pour les bugs : décrivez les étapes pour reproduire, le comportement attendu vs observé
+   - Incluez la version du projet, votre environnement (OS, navigateur, etc.)
+   - Ajoutez des captures d'écran si pertinent
+4. **Étiquetez correctement** votre issue pour faciliter son tri et sa résolution.
+
+## Proposer des fonctionnalités
+
+Pour proposer de nouvelles fonctionnalités :
+
+1. **Ouvrez une issue** de type "Feature Request" pour discuter d'abord de votre idée.
+2. **Détaillez le besoin** que cette fonctionnalité résoudrait.
+3. **Proposez une approche** sur la façon dont cette fonctionnalité pourrait être implémentée.
+4. **Soyez ouvert aux discussions** et modifications de votre proposition initiale.
+5. Une fois validée, vous pouvez procéder à l'implémentation (voir la section "Contribuer au code").
+
+## Contribuer au code
+
+### Workflow de développement
+
+1. **Forkez** le dépôt GitHub vers votre compte personnel.
+2. **Clonez** votre fork sur votre machine locale :
+   ```bash
+   git clone https://github.com/votre-utilisateur/ina-zaoui.git
+   cd ina-zaoui
+   ```
+3. **Créez une branche** pour votre contribution :
+   ```bash
+   git checkout -b feature/ma-fonctionnalite
+   # ou
+   git checkout -b fix/mon-correctif
+   ```
+4. **Développez** votre contribution en suivant les normes de codage (voir ci-dessous).
+5. **Testez** vos modifications (voir la section "Contribuer aux tests").
+6. **Committez** vos changements avec des messages clairs :
+   ```bash
+   git commit -m "Feature: Ajout de la fonctionnalité X pour résoudre Y"
+   ```
+7. **Poussez** votre branche vers votre fork :
+   ```bash
+   git push origin feature/ma-fonctionnalite
+   ```
+8. **Ouvrez une Pull Request** vers le dépôt principal.
+
+### Normes de codage
+
+- Suivez les standards PSR-12 pour le code PHP
+- Utilisez des noms de variables et fonctions explicites
+- Commentez votre code lorsque nécessaire
+- Respectez l'architecture du projet
+- Assurez-vous que votre code passe les linters configurés (PHP-CS-Fixer, ESLint)
+
+## Contribuer aux tests
+
+Toutes les nouvelles fonctionnalités et correctifs doivent être accompagnés de tests :
+
+1. **Écrivez des tests unitaires** pour vos fonctionnalités ou correctifs.
+2. **Assurez-vous** que tous les tests existants passent toujours.
+3. **Visez une couverture de code** d'au moins 80% pour les nouvelles fonctionnalités.
+
+Pour exécuter les tests :
+```bash
+# Exécuter tous les tests
+./vendor/bin/phpunit
+
+# Exécuter un test spécifique
+./vendor/bin/phpunit --filter=NomDuTest
+
+# Vérifier la couverture de code
+./vendor/bin/phpunit --coverage-html var/coverage
+```
+
+## 📝 Contribuer à la documentation
+
+La documentation est aussi importante que le code :
+
+1. **Mettez à jour le README** si nécessaire.
+2. **Documentez les nouvelles fonctionnalités** ou changements d'API.
+3. **Commentez le code** avec des annotations PHPDoc pour les classes et méthodes.
+4. **Créez ou mettez à jour** les guides utilisateur si votre contribution modifie le comportement de l'application.
+
+## Processus de révision
+
+Une fois votre Pull Request soumise :
+
+1. Les mainteneurs du projet examineront votre code.
+2. Des modifications peuvent être demandées.
+3. Assurez-vous que les CI/CD pipelines passent avec succès.
+4. Une fois approuvée, votre contribution sera fusionnée dans la branche principale.
+
+## Code de conduite
+
+En contribuant à ce projet, vous acceptez de respecter notre Code de Conduite :
+
+- Soyez respectueux et inclusif dans vos communications
+- Acceptez constructivement les critiques
+- Concentrez-vous sur ce qui est meilleur pour la communauté
+- Faites preuve d'empathie envers les autres membres de la communauté
+
+## Licence
+
+En soumettant une contribution, vous acceptez que votre travail soit licencié sous la même licence que le projet (MIT).
+
+---
+
+Nous vous remercions pour votre intérêt et vos contributions qui aident à améliorer Ina Zaoui Photography !
