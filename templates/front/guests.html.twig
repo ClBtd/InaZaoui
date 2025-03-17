@@ -1,0 +1,21 @@
+{% extends 'front.html.twig' %}
+
+{% block front %}
+    <div class="row">
+        <div class="col-12">
+            <h3 class="mb-5">Invités</h3>
+            <div class="guests d-flex flex-column">
+                {% for guestData in guests %}
+                    {% set guest = guestData[0] %}
+                    {% set mediaCount = guestData['mediaCount'] %}
+                    {% if guest.roles is same as ['ROLE_USER'] %}
+                        <div class="guest py-5 d-flex justify-content-between align-items-center">
+                            <h4>{{ guest.name }} ({{ mediaCount }})</h4>
+                            <a href="{{ path('guest', {id: guest.id}) }}" class="btn btn-link" role="link" aria-label="Découvrir les médias de {{ guest.name }}">découvrir</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

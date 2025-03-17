@@ -1,0 +1,69 @@
+{% extends 'admin.html.twig' %}
+
+{% block admin %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Medias</h1>
+        <a href="{{ path('admin_media_add') }}" class="btn btn-primary" aria-label="Ajouter un média">Ajouter</a>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Titre</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Artiste</th>
+                    <th>Album</th>
+                {% endif %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for media in medias %}
+                <tr>
+                    <td>
+                        <img src="{{ asset(media.path) }}" width="75" alt="Image de {{ media.title }}" />
+                    </td>
+                    <td>{{ media.title }}</td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>{{ media.user.name }}</td>
+                        <td>{{ media.album.name ?? '' }}</td>
+                    {% endif %}
+                    <td>
+                        <a href="{{ path('admin_media_delete', {id: media.id}) }}" class="btn btn-danger" aria-label="Supprimer {{ media.title }}">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% set totalPages = (total / 25)|round(0, 'ceil') %}
+
+    <nav aria-label="Navigation des pages des médias">
+        <ul class="pagination">
+            {% if page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_media_index', {page: 1}) }}" aria-label="Première page">Première page</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_media_index', {page: page - 1}) }}" aria-label="Page précédente">Précédent</a>
+                </li>
+            {% endif %}
+
+            {% for i in range(max(1, page - 3), min(totalPages, page + 3)) %}
+                <li class="page-item {% if i == page %}active{% endif %}">
+                    <a class="page-link" href="{{ path('admin_media_index', {page: i}) }}" aria-label="Page {{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page < totalPages %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_media_index', {page: page + 1}) }}" aria-label="Page suivante">Suivant</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_media_index', {page: totalPages}) }}" aria-label="Dernière page">Dernière page</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

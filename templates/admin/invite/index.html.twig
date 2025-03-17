@@ -1,0 +1,67 @@
+{% extends 'admin.html.twig' %}
+
+{% block admin %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Invités</h1>
+        <a href="{{ path('admin_invite_add') }}" class="btn btn-primary" aria-label="Ajouter un invité">Ajouter</a>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Accès</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for guest in guests %}
+            {% if guest.roles is same as ['ROLE_USER'] %}
+            <tr>
+                <td>{{ guest.name }}</td>
+                <td>
+                    {% if guest.access %}
+                        <a href="{{ path('admin_invite_access', {id: guest.id}) }}" class="btn btn-success" aria-label="Désactiver l'accès de {{ guest.name }}">Désactiver l'accès</a>
+                    {% else %}
+                        <a href="{{ path('admin_invite_access', {id: guest.id}) }}" class="btn btn-warning" aria-label="Réactiver l'accès de {{ guest.name }}">Réactiver l'accès</a>
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="{{ path('admin_invite_delete', {id: guest.id}) }}" class="btn btn-danger" aria-label="Supprimer {{ guest.name }}">Supprimer</a>
+                </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+
+    {% set totalPages = (total / 25)|round(0, 'ceil') %}
+
+    <nav aria-label="Pagination des invités">
+        <ul class="pagination">
+            {% if page > 1 %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_invite_index', {page: 1}) }}" aria-label="Première page">Première page</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_invite_index', {page: page - 1}) }}" aria-label="Page précédente">Précédent</a>
+                </li>
+            {% endif %}
+
+            {% for i in range(max(1, page - 3), min(totalPages, page + 3)) %}
+                <li class="page-item {% if i == page %}active{% endif %}">
+                    <a class="page-link" href="{{ path('admin_invite_index', {page: i}) }}" aria-label="Page {{ i }}">{{ i }}</a>
+                </li>
+            {% endfor %}
+
+            {% if page < totalPages %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_invite_index', {page: page + 1}) }}" aria-label="Page suivante">Suivant</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ path('admin_invite_index', {page: totalPages}) }}" aria-label="Dernière page">Dernière page</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'admin.html.twig' %}
+
+{% block admin %}
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Invités</h1>
+        <a href="{{ path('admin_invite_index') }}" class="btn btn-primary">Retour</a>
+    </div>
+
+    <!-- Affichage des erreurs de formulaire -->
+    {% for field in ['name', 'description', 'email', 'password'] %}
+        {% for error in attribute(form, field).vars.errors %}
+            <div class="alert alert-danger">{{ error.message }}</div>
+        {% endfor %}
+    {% endfor %}
+
+    {{ form_start(form) }}
+        {{ form_row(form.name, {'attr': {'aria-label': 'Nom de l\'invité'}}) }}
+        {{ form_row(form.description, {'attr': {'aria-label': 'Description de l\'invité'}}) }}
+        {{ form_row(form.email, {'attr': {'aria-label': 'Email de l\'invité'}}) }}
+        {{ form_row(form.password, {'attr': {'aria-label': 'Mot de passe de l\'invité'}}) }}
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(form) }}
+{% endblock %}
