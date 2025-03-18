@@ -2,17 +2,10 @@
 
 {% block admin %}
     <div class="d-flex justify-content-between align-items-center">
-        <h1>Médias</h1>
+        <h1>Medias</h1>
         <a href="{{ path('admin_media_index') }}" class="btn btn-primary">Retour</a>
     </div>
-
-    <!-- Affichage des erreurs de formulaire -->
-    {% for field in ['title', 'user', 'album', 'file'] %}
-        {% for error in attribute(form, field).vars.errors %}
-            <div class="alert alert-danger">{{ error.message }}</div>
-        {% endfor %}
-    {% endfor %}
-
+    
     {{ form_start(form) }}
         {{ form_row(form.title, {'attr': {'aria-label': 'Titre du média'}}) }}
         
@@ -25,4 +18,5 @@
         
         <button type="submit" class="btn btn-primary">Ajouter</button>
     {{ form_end(form) }}
+    
 {% endblock %}

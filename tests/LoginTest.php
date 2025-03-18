@@ -73,6 +73,8 @@ class LoginTest extends WebTestCase
         $this->assertSelectorTextContains('.alert-danger', 'Votre compte est désactivé.');
 
         // Réactivation de l'utilisateur après le test
+        $entityManager->clear(); 
+        $user = $entityManager->getRepository(User::class)->findOneByEmail('user2@example.com');
         $user->setAccess(true);
         $entityManager->flush();
     }
