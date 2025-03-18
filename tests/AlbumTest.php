@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class AlbumTest extends WebTestCase
 {
     // Test de l'ajout et de la suppression d'un album
-    public function testAddandDeleteAlbum()
+    public function testAddandDeleteAlbum() : void
     {
         // Connexion d'un utilisateur admin 
         $client = static::createClient();
@@ -43,7 +43,7 @@ class AlbumTest extends WebTestCase
     }
 
     // Test de la suppression d'un média avec cascade
-    public function testDeletMediaCascade()
+    public function testDeletMediaCascade() : void
     {
         // Connexion d'un utilisateur admin 
         $client = static::createClient();
@@ -91,7 +91,7 @@ class AlbumTest extends WebTestCase
     }
 
     // Test de la mise à jour d'un album
-    public function testUpdateAlbum()
+    public function testUpdateAlbum() : void
     {
         // Connexion d'un utilisateur admin 
         $client = static::createClient();

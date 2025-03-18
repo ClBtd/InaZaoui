@@ -115,13 +115,17 @@ php bin/console doctrine:fixtures:load --env=test
 ### Exécution des tests
 
 ```bash
-# Lancer tous les tests
+# Lancer tous les tests phpunit
 ./vendor/bin/phpunit
+
+# Lancer tous les tests phpstan
+.vendor/bin/phpstan analyse
 
 # Générer un rapport de couverture HTML
 ./vendor/bin/phpunit --coverage-html var/coverage
 ```
 Le rapport de couverture sera disponible dans le dossier `var/coverage`.
+
 
 ## Licence
 

@@ -16,7 +16,7 @@ class InviteTest extends WebTestCase
     }
 
     // Teste l'ajout et la suppression d'un utilisateur
-    public function testAddandDeleteUser()
+    public function testAddandDeleteUser() : void
     {
         // Connexion d'un utilisateur admin
         $client = static::createClient();
@@ -48,7 +48,7 @@ class InviteTest extends WebTestCase
     }
 
     // Teste la désactivation et la réactivation de l'accès d'un utilisateur
-    public function testCancelUserAccess()
+    public function testCancelUserAccess() : void
     {
         // Connexion d'un utilisateur admin
         $client = static::createClient();

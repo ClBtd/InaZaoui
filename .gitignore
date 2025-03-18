@@ -20,3 +20,6 @@
 ###< symfony/phpunit-bridge ###
 
 .DS_Store
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###

@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class MediaTest extends WebTestCase
 {
     // Teste que l'utilisateur ne peut voir que ses propres médias
-    public function testUserCanOnlySeeOwnMedia()
+    public function testUserCanOnlySeeOwnMedia() : void
     {
         // Connexion d'un utilisateur classique
         $client = static::createClient();
@@ -23,7 +23,7 @@ class MediaTest extends WebTestCase
     }
 
     // Test la pagination des médias
-    public function testMediaPaginationWorksCorrectly()
+    public function testMediaPaginationWorksCorrectly() : void
     {
         // Connexion d'un utilisateur admin
         $client = static::createClient();
@@ -42,7 +42,7 @@ class MediaTest extends WebTestCase
     }
 
     // Teste l'ajout et la suppression de médias
-    public function testUserCanAddandDeleteMedia()
+    public function testUserCanAddandDeleteMedia() : void
     {
         // Connexion d'un utilisateur classique
         $client = static::createClient();

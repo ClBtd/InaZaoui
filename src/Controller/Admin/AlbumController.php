@@ -7,6 +7,7 @@ use App\Form\AlbumType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
@@ -22,7 +23,7 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/admin/album', name: 'admin_album_index')]
-    public function index()
+    public function index() : Response
     {
         // Récupère tous les albums
         $albums = $this->entityManager->getRepository(Album::class)->findAll();
@@ -32,7 +33,7 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/admin/album/add', name: 'admin_album_add')]
-    public function add(Request $request)
+    public function add(Request $request) : Response
     {
         $album = new Album();
         // Crée le formulaire pour l'entité Album
@@ -53,7 +54,7 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/admin/album/update/{id<\d+>}', name: 'admin_album_update')]
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id) : Response
     {
         // Recherche l'album à modifier
         $album = $this->entityManager->getRepository(Album::class)->find($id);
@@ -80,7 +81,7 @@ class AlbumController extends AbstractController
     }
 
     #[Route('/admin/album/delete/{id<\d+>}', name: 'admin_album_delete')]
-    public function delete(int $id)
+    public function delete(int $id) : Response
     {
         // Recherche l'album à supprimer
         $album = $this->entityManager->getRepository(Album::class)->find($id);

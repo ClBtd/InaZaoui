@@ -8,7 +8,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -21,14 +21,14 @@ class HomeController extends AbstractController
     }
 
     #[Route('/', name: 'home')]
-    public function home(UserRepository $userRepository, UserPasswordHasherInterface $userPasswordHasher)
+    public function home() : Response
     {
         // Rend la vue d'accueil
         return $this->render('front/home.html.twig');
     }
 
     #[Route('/guests', name: 'guests')]
-    public function guests(UserRepository $userRepository)
+    public function guests(UserRepository $userRepository) : Response
     {
         // Récupère les invités avec leur nombre de médias
         $guests = $userRepository->findGuestsWithMediaCount();
@@ -40,7 +40,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/guest/{id}', name: 'guest')]
-    public function guest(int $id)
+    public function guest(int $id) : Response
     {
         // Recherche l'invité par son identifiant
         $guest = $this->entityManager->getRepository(User::class)->find($id);
@@ -57,7 +57,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/portfolio/{id}', name: 'portfolio')]
-    public function portfolio(?int $id = null)
+    public function portfolio(?int $id = null) : Response
     {
         // Récupère tous les albums
         $albums = $this->entityManager->getRepository(Album::class)->findAll();
@@ -82,7 +82,7 @@ class HomeController extends AbstractController
     }
 
     #[Route('/about', name: 'about')]
-    public function about()
+    public function about() : Response
     {
         // Rend la vue à propos
         return $this->render('front/about.html.twig');

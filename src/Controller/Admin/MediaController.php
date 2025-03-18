@@ -3,10 +3,12 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Media;
+use App\Entity\User;
 use App\Form\MediaType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MediaController extends AbstractController
@@ -19,7 +21,7 @@ class MediaController extends AbstractController
     }
 
     #[Route('/admin/media', name: 'admin_media_index')]
-    public function index(Request $request)
+    public function index(Request $request) : Response
     {
         // Récupère la page courante depuis la requête
         $page = $request->query->getInt('page', 1);
@@ -54,7 +56,7 @@ class MediaController extends AbstractController
     }
 
     #[Route('/admin/media/add', name: 'admin_media_add')]
-    public function add(Request $request)
+    public function add(Request $request) : Response
     {
         $media = new Media(); // Création d'un objet Media
         $form = $this->createForm(MediaType::class, $media, [
@@ -66,7 +68,7 @@ class MediaController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Si non-admin, associer le média à l'utilisateur courant
             if (!$this->isGranted('ROLE_ADMIN')) {
-                $media->setUser($this->getUser());
+                $media->setUser($this->getUser() instanceof User ? $this->getUser() : null);
             }
 
             // Générer un chemin unique pour le fichier
@@ -86,7 +88,7 @@ class MediaController extends AbstractController
     }
 
     #[Route('/admin/media/delete/{id<\d+>}', name: 'admin_media_delete')]
-    public function delete(int $id)
+    public function delete(int $id) : Response
     {
         // Vérification de l'existence du média
         $media = $this->entityManager->getRepository(Media::class)->find($id);

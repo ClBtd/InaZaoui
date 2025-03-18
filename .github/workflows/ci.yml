@@ -53,6 +53,9 @@ jobs:
         run: php bin/phpunit --testdox --stderr | tee test-output.log
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      
+      - name: Analyse statique avec PHPStan
+        run: vendor/bin/phpstan analyse --no-progress
 
       
 

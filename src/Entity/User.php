@@ -32,9 +32,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password;
 
+
+    /** @var array<int, string> */
     #[ORM\Column(type: "json")]
     private array $roles = [];
 
+    /** @var Collection<int, Media> */
     #[ORM\OneToMany(targetEntity: Media::class, mappedBy: 'user')]
     private Collection $medias;
 
@@ -150,12 +153,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     // Getter pour la collection des médias
+     /**
+     * @return Collection<int, Media>
+     */
     public function getMedias(): Collection
     {
         return $this->medias;
     }
 
     // Setter pour la collection des médias
+    /**
+     * @param Collection<int, Media> $medias
+     * @return static
+     */
     public function setMedias(Collection $medias): static
     {
         $this->medias = $medias;
