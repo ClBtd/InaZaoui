@@ -41,7 +41,7 @@ class InviteTest extends WebTestCase
 
         $userTestId = $userTest->getId();
 
-        // Supprime l'utilisateur
+        // Suppression de l'utilisateur
         $client->request('GET', "/admin/invite/delete/$userTestId");
         $client->followRedirect();
         $this->assertSelectorTextNotContains('tbody', 'userTest');
@@ -56,14 +56,14 @@ class InviteTest extends WebTestCase
         $user = $userRepository->findAdmin();
         $client->loginUser($user);
 
-        // Désactive l'accès de l'utilisateur et vérifie la désactivation
+        // Désactivation de l'accès de l'utilisateur et vérifie la désactivation
         $crawler = $client->request('GET', '/admin/invite');
         $link = $crawler->selectLink("Désactiver l'accès")->link();
         $client->click($link);
         $crawler = $client->request('GET', '/admin/invite');
         $this->assertSelectorTextContains('tbody', "Réactiver l'accès");
 
-        // Réactive l'accès de l'utilisateur
+        // Réactivation de l'accès de l'utilisateur
         $link = $crawler->selectLink("Réactiver l'accès")->link();
         $client->click($link);
         $crawler = $client->request('GET', '/admin/invite');

@@ -22,7 +22,7 @@ class MediaTest extends WebTestCase
         $this->assertSelectorTextNotContains('thead', 'Artiste');
     }
 
-    // Teste la pagination des médias
+    // Test la pagination des médias
     public function testMediaPaginationWorksCorrectly()
     {
         // Connexion d'un utilisateur admin
@@ -49,12 +49,12 @@ class MediaTest extends WebTestCase
         $user = self::getContainer()->get('doctrine')->getRepository(User::class)->findBy(['name' => 'user1']);
         $client->loginUser($user[0]);
 
-        // Préparer le fichier de test
+        // Prépararion du fichier de test
         $tempFilePath = sys_get_temp_dir() . '/test_' . uniqid() . '.jpg';
         copy(__DIR__ . '/./test.jpg', $tempFilePath);
         $file = new UploadedFile($tempFilePath, 'test.jpeg', 'image/jpeg', null, true);
 
-        // Ajouter le média
+        // Ajout du média
         $crawler = $client->request('GET', '/admin/media/add');
         $form = $crawler->selectButton('Ajouter')->form();
         $formData = [
@@ -69,7 +69,7 @@ class MediaTest extends WebTestCase
         $client->followRedirect();
         $this->assertSelectorTextContains('table', 'Test Media');
 
-        // Supprimer le média
+        // Suppression du média
         $mediaId = self::getContainer()->get('doctrine')->getRepository(Media::class)->findBy(['title' => 'Test Media'])[0]->getId();
         $client->request('GET', "/admin/media/delete/$mediaId");
         $client->followRedirect();

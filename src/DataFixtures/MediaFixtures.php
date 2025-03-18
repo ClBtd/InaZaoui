@@ -47,13 +47,19 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         }
 
         // Récupération des utilisateurs non-admins
-        $users = $manager->getRepository(User::class)->findNonAdmins();
+        $users = $manager->getRepository(User::class)->findAll();
+        $nonAdminUsers = [];
+        foreach ($users as $user) {
+            if ($user->getRoles() != ['ROLE_ADMIN']) {
+                $nonAdminUsers[] = $user;
+            }
+        }
 
         // Création de 60 médias associés à des utilisateurs non-admins
         for ($i = 1; $i <= 60; $i++) {
             $manager->persist(
                 (new Media())
-                    ->setUser($this->faker->randomElement($users))
+                    ->setUser($this->faker->randomElement($nonAdminUsers))
                     ->setPath(sprintf('uploads/user_media%d.jpg', $i))
                     ->setTitle(sprintf('user_media%d', $i))
             );
