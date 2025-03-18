@@ -65,8 +65,19 @@ php bin/console doctrine:migrations:migrate
 # Charger les fixtures (données de démonstration)
 php bin/console doctrine:fixtures:load
 ```
+### 4. Restauration de la sauvegarde PostgresSQL
 
-### 4. Démarrage du serveur
+Pour restaurer votre base de données à partir du fichier de sauvegarde PostgreSQL backup_file.sql :
+
+# Assurez-vous que les outils PostgreSQL sont dans votre PATH
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/latest/bin
+
+# Restaurer le fichier
+psql -U username -d ina_zaoui_db -f backup_file.sql
+
+Remplacez username et ina_zaoui_db par vos informations spécifiques.
+
+### 5. Démarrage du serveur
 
 ```bash
 # Avec Symfony CLI
@@ -82,8 +93,8 @@ Une fois le serveur démarré, accédez à l'application via :
 
 - **Interface publique** : [http://localhost:8000](http://localhost:8000)
 - **Administration** : [http://localhost:8000/admin](http://localhost:8000/admin)
-  - Identifiants par défaut (si fixtures chargées) :
-  - Email : admin@example.com
+  - Identifiants admin (après restauration de la base de données) :
+  - Email : ina@zaoui.com
   - Mot de passe : password
 
 ## Tests et qualité
@@ -111,7 +122,6 @@ php bin/console doctrine:fixtures:load --env=test
 ./vendor/bin/phpunit --coverage-html var/coverage
 ```
 Le rapport de couverture sera disponible dans le dossier `var/coverage`.
-
 
 ## Licence
 
