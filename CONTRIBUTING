@@ -46,7 +46,7 @@ Pour proposer de nouvelles fonctionnalités :
 5. **Testez** vos modifications (voir la section "Contribuer aux tests").
 6. **Committez** vos changements avec des messages clairs :
    ```bash
-   git commit -m "Feature: Ajout de la fonctionnalité X pour résoudre Y"
+   git commit -m "Feature: Ajout de la fonctionnalite X pour resoudre Y"
    ```
 7. **Poussez** votre branche vers votre fork :
    ```bash
@@ -64,55 +64,55 @@ Pour proposer de nouvelles fonctionnalités :
 
 ## Contribuer aux tests
 
-Toutes les nouvelles fonctionnalités et correctifs doivent être accompagnés de tests :
+Toutes les nouvelles fonctionnalites et correctifs doivent etre accompagnes de tests :
 
-1. **Écrivez des tests unitaires** pour vos fonctionnalités ou correctifs.
+1. **Ecrivez des tests unitaires** pour vos fonctionnalites ou correctifs.
 2. **Assurez-vous** que tous les tests existants passent toujours.
-3. **Visez une couverture de code** d'au moins 80% pour les nouvelles fonctionnalités.
+3. **Visez une couverture de code** d'au moins 80% pour les nouvelles fonctionnalites.
 
-Pour exécuter les tests :
+Pour executer les tests :
 ```bash
-# Exécuter tous les tests
+# Executer tous les tests
 ./vendor/bin/phpunit
 
-# Exécuter un test spécifique
+# Executer un test specifique
 ./vendor/bin/phpunit --filter=NomDuTest
 
-# Vérifier la couverture de code
+# Verifier la couverture de code
 ./vendor/bin/phpunit --coverage-html var/coverage
 ```
 
-## Contribuer à la documentation
+## Contribuer a la documentation
 
 La documentation est aussi importante que le code :
 
-1. **Mettez à jour le README** si nécessaire.
-2. **Documentez les nouvelles fonctionnalités** ou changements d'API.
-3. **Commentez le code** avec des annotations PHPDoc pour les classes et méthodes.
-4. **Créez ou mettez à jour** les guides utilisateur si votre contribution modifie le comportement de l'application.
+1. **Mettez a jour le README** si necessaire.
+2. **Documentez les nouvelles fonctionnalites** ou changements d'API.
+3. **Commentez le code** avec des annotations PHPDoc pour les classes et methodes.
+4. **Creez ou mettez a jour** les guides utilisateur si votre contribution modifie le comportement de l'application.
 
-## Processus de révision
+## Processus de revision
 
 Une fois votre Pull Request soumise :
 
 1. Les mainteneurs du projet examineront votre code.
-2. Des modifications peuvent être demandées.
-3. Assurez-vous que les CI/CD pipelines passent avec succès.
-4. Une fois approuvée, votre contribution sera fusionnée dans la branche principale.
+2. Des modifications peuvent etre demandees.
+3. Assurez-vous que les CI/CD pipelines passent avec succes.
+4. Une fois approuvee, votre contribution sera fusionnee dans la branche principale.
 
 ## Code de conduite
 
-En contribuant à ce projet, vous acceptez de respecter notre Code de Conduite :
+En contribuant a ce projet, vous acceptez de respecter notre Code de Conduite :
 
 - Soyez respectueux et inclusif dans vos communications
 - Acceptez constructivement les critiques
-- Concentrez-vous sur ce qui est meilleur pour la communauté
-- Faites preuve d'empathie envers les autres membres de la communauté
+- Concentrez-vous sur ce qui est meilleur pour la communaute
+- Faites preuve d'empathie envers les autres membres de la communaute
 
 ## Licence
 
-En soumettant une contribution, vous acceptez que votre travail soit licencié sous la même licence que le projet (MIT).
+En soumettant une contribution, vous acceptez que votre travail soit licensie sous la meme licence que le projet (MIT).
 
-----
+---
 
-Nous vous remercions pour votre intérêt et vos contributions qui aident à améliorer Ina Zaoui Photography.
+Nous vous remercions pour votre interet et vos contributions qui aident a ameliorer Ina Zaoui Photography.
