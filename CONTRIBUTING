@@ -82,7 +82,7 @@ Pour exécuter les tests :
 ./vendor/bin/phpunit --coverage-html var/coverage
 ```
 
-## 📝 Contribuer à la documentation
+## Contribuer à la documentation
 
 La documentation est aussi importante que le code :
 
