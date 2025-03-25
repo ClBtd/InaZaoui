@@ -46,7 +46,7 @@ class HomeController extends AbstractController
         $guest = $this->entityManager->getRepository(User::class)->find($id);
 
         // Si l'invité n'est pas trouvé, une erreur 404 peut être lancée (optionnelle)
-        if (!$guest) {
+        if (!$guest || !$guest->isAccess()) {
             throw $this->createNotFoundException('Invité non trouvé.');
         }
 

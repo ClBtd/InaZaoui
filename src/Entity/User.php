@@ -38,7 +38,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     /** @var Collection<int, Media> */
-    #[ORM\OneToMany(targetEntity: Media::class, mappedBy: 'user')]
+    #[ORM\OneToMany(
+        targetEntity: Media::class, 
+        mappedBy: 'user', 
+        cascade: ['persist', 'remove'], 
+        orphanRemoval: true
+    )]
     private Collection $medias;
 
     #[ORM\Column]

@@ -63,6 +63,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $this->createQueryBuilder('g')
             ->select('g, COUNT(m.id) AS mediaCount')
             ->leftJoin('g.medias', 'm')
+            ->where('g.access = true')
             ->groupBy('g.id')
             ->orderBy('g.id', 'ASC')
             ->getQuery()
